@@ -24,6 +24,7 @@
       panels = [{
         location = "top";
         height = 46;
+        lengthMode = "fit";
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.pager"
@@ -33,6 +34,7 @@
           "org.kde.plasma.digitalclock"
           "org.kde.plasma.showdesktop"
         ];
+        floating = false;
       }];
       enable = true;
     };
