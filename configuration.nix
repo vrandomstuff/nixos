@@ -64,6 +64,9 @@
     vulkan-tools
     clinfo
     fastfetch
+    ghostty
+    zoxide
+    wl-clipboard
   ];
   services.openssh.enable = true;
  
