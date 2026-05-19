@@ -9,11 +9,28 @@
       url = "github:AlvaroParker/helium-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
-  outputs = inputs@{ self, nixpkgs, helium, ... }: {
+  outputs = inputs@{ self, nixpkgs, helium, home-manager, plasma-manager, ... }: {
     nixosConfigurations.nixos-btw = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
-      modules = [ ./configuration.nix ];
+      modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+          
+        }
+        ./home.nix
+      ];
     };
   };
 }

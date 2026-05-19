@@ -1,0 +1,2 @@
+fastfetch
+export EDITOR=vim

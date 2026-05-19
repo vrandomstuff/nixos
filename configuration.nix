@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./home.nix
     ];
   nixpkgs.config.allowUnfree = true; # i try to do foss software when i can but sometimes i cant
   boot.loader = {
@@ -62,6 +63,7 @@
     mesa-demos
     vulkan-tools
     clinfo
+    fastfetch
   ];
   services.openssh.enable = true;
  
